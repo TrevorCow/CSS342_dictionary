@@ -119,21 +119,26 @@ TEST(dict, remove) {
 
     ArrayDictionary<int, int> hashTable(5);
 
+    //empty dictionary
     ASSERT_FALSE(hashTable.remove(0));
 
     hashTable.add(1, 100);
 
+    //key does not exists in a dictionary that has no collision
     ASSERT_FALSE(hashTable.remove(0));
+    //key exists in a dictionary that has no collision
     ASSERT_TRUE(hashTable.remove(1));
 
     hashTable.add(1, 100);
     hashTable.add(6, 101);
 
+    //key exists in a dictionary that has collision, key is in the collision.
     ASSERT_TRUE(hashTable.remove(1));
 
     hashTable.add(1, 100);
     hashTable.add(6, 101);
 
-    ASSERT_TRUE(hashTable.remove(1));
+    //key does not exists in a dictionary that has collision
+    ASSERT_TRUE(hashTable.remove(0));
 
 }
